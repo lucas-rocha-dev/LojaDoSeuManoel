@@ -1,5 +1,5 @@
 ﻿using LojaDoSeuManoel.Application.DTO;
-using LojaDoSeuManoel.Application.DTOs;
+using LojaDoSeuManoel.Application.DTOs.Request;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaDoSeuManoel.API.Controllers

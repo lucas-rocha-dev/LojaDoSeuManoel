@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LojaDoSeuManoel.Application.DTOs
+namespace LojaDoSeuManoel.Application.DTOs.Response
 {
     public class OrderResponseDto
     {
         public int Pedido_id { get; set; }
-        public List<BoxDto> Caixas { get; set; } = new();
+        public List<BoxResponseDto> Caixas { get; set; } = new();
     }
 }

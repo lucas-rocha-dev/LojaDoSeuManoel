@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LojaDoSeuManoel.Application.DTOs
+namespace LojaDoSeuManoel.Application.DTOs.Response
 {
     public class ResponseDto
     {

@@ -14,6 +14,13 @@ namespace LojaDoSeuManoel.Domain.Entities
         public decimal Largura { get; set; }
         public decimal Comprimento { get; set; }
 
-        public decimal Volume => Altura * Largura * Comprimento;
+       public Box(string name, decimal altura, decimal largura, decimal comprimento)
+        {
+            Name = name;
+            Altura = altura;
+            Largura = largura;
+            Comprimento = comprimento;
+        }
+        
     }
 }

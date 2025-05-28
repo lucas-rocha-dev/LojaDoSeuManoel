@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LojaDoSeuManoel.Application.DTOs
+namespace LojaDoSeuManoel.Application.DTOs.Request
 {
-    public class ProductDTO
+    public class ProductRequestDto
     {
         public string Produto_id { get; set; }
-        public DimensoesDto Dimensoes { get; set; } = new();
+        public DimensoesRequestDto Dimensoes { get; set; } = new();
 
     }
 }
