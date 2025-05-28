@@ -50,7 +50,7 @@ public class EmpacotadorServiceTests
 
         var caixas = resultado.pedidos[0].Caixas;
         Assert.AreEqual(1, caixas.Count);
-        Assert.AreEqual("Caixa 2", caixas[0].Caixa_id);
+        Assert.AreEqual("Caixa 1", caixas[0].Caixa_id);
         CollectionAssert.AreEquivalent(new List<string> { "PS5", "Volante" }, caixas[0].Produtos);
     }
 

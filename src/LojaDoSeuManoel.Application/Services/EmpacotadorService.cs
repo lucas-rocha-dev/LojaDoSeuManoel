@@ -29,47 +29,8 @@ namespace LojaDoSeuManoel.Application.Services
                     .ToList();
 
 
-                /*
-                foreach (var produto in produtosNaoAlocados) {
-                    bool alocado = false;
-                    foreach (var caixa in caixasUsadas) {
-                        var caixaInfo = _caixasDisponiveis.First(c => c.Nome == caixa.Caixa_id);
-                        if (ProdutoCabe(produto.Dimensoes, caixaInfo)) {
-                            caixa.Produtos.Add(produto.Produto_id);
-                            alocado = true;
-                            break;
-                        }
-                    }
-
-
-                    if (!alocado) {
-                        foreach (var caixaTipo in _caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
-                            if (ProdutoCabe(produto.Dimensoes, caixaTipo)) {
-                                caixasUsadas.Add(new BoxResponseDto {
-                                    Caixa_id = caixaTipo.Nome,
-                                    Produtos = new List<string> { produto.Produto_id }
-                                });
-                                alocado = true;
-                                break;
-                            }
-                        }
-
-
-                    }
-
-                    if (!alocado) {
-                        caixasUsadas.Add(new BoxResponseDto {
-                            Caixa_id = null,
-                            Produtos = new List<string> { produto.Produto_id },
-                            Observacao = "Produto não cabe em nenhuma caixa disponível."
-                        });
-                    }
-                }
-                
-                 */
                 bool todosProdutosAlocados = false;
 
-                // Tenta colocar todos os produtos juntos em uma única caixa
                 foreach (var caixa in _caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
                     if (TodosProdutosCabemNaCaixa(produtosNaoAlocados, caixa)) {
                         caixasUsadas.Add(new BoxResponseDto {
@@ -82,7 +43,6 @@ namespace LojaDoSeuManoel.Application.Services
                 }
 
                 if (!todosProdutosAlocados) {
-                    // Aplica a lógica atual, alocando produto por produto
                     foreach (var produto in produtosNaoAlocados) {
                         bool alocado = false;
 

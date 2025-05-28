@@ -10,6 +10,11 @@ namespace LojaDoSeuManoel.API.Controllers
     {
         private readonly IEmpacotadorService _service;
 
+        public OrdersController(IEmpacotadorService service)
+        {
+            _service = service;
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RequestOrderDto orderDtos)
         {
