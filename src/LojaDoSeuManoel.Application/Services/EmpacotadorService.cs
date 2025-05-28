@@ -28,27 +28,33 @@ namespace LojaDoSeuManoel.Application.Services
                     .OrderByDescending(p => CalcVolume(p.Dimensoes.Largura, p.Dimensoes.Altura, p.Dimensoes.Comprimento))
                     .ToList();
 
+
+                /*
                 foreach (var produto in produtosNaoAlocados) {
                     bool alocado = false;
                     foreach (var caixa in caixasUsadas) {
-                        var caixaInfo = _caixasDisponiveis.First(c => c.Id.ToString() == caixa.Caixa_id);
+                        var caixaInfo = _caixasDisponiveis.First(c => c.Nome == caixa.Caixa_id);
                         if (ProdutoCabe(produto.Dimensoes, caixaInfo)) {
                             caixa.Produtos.Add(produto.Produto_id);
                             alocado = true;
                             break;
                         }
                     }
+
+
                     if (!alocado) {
-                        foreach (var caixaTipo in _caixasDisponiveis) {
+                        foreach (var caixaTipo in _caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
                             if (ProdutoCabe(produto.Dimensoes, caixaTipo)) {
                                 caixasUsadas.Add(new BoxResponseDto {
-                                    Caixa_id = caixaTipo.Id.ToString(),
+                                    Caixa_id = caixaTipo.Nome,
                                     Produtos = new List<string> { produto.Produto_id }
                                 });
                                 alocado = true;
                                 break;
                             }
                         }
+
+
                     }
 
                     if (!alocado) {
@@ -57,6 +63,58 @@ namespace LojaDoSeuManoel.Application.Services
                             Produtos = new List<string> { produto.Produto_id },
                             Observacao = "Produto não cabe em nenhuma caixa disponível."
                         });
+                    }
+                }
+                
+                 */
+                bool todosProdutosAlocados = false;
+
+                // Tenta colocar todos os produtos juntos em uma única caixa
+                foreach (var caixa in _caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
+                    if (TodosProdutosCabemNaCaixa(produtosNaoAlocados, caixa)) {
+                        caixasUsadas.Add(new BoxResponseDto {
+                            Caixa_id = caixa.Nome,
+                            Produtos = produtosNaoAlocados.Select(p => p.Produto_id).ToList()
+                        });
+                        todosProdutosAlocados = true;
+                        break;
+                    }
+                }
+
+                if (!todosProdutosAlocados) {
+                    // Aplica a lógica atual, alocando produto por produto
+                    foreach (var produto in produtosNaoAlocados) {
+                        bool alocado = false;
+
+                        foreach (var caixa in caixasUsadas) {
+                            var caixaInfo = _caixasDisponiveis.First(c => c.Nome == caixa.Caixa_id);
+                            if (ProdutoCabe(produto.Dimensoes, caixaInfo)) {
+                                caixa.Produtos.Add(produto.Produto_id);
+                                alocado = true;
+                                break;
+                            }
+                        }
+
+                        if (!alocado) {
+                            foreach (var caixaTipo in _caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
+                                if (ProdutoCabe(produto.Dimensoes, caixaTipo)) {
+                                    caixasUsadas.Add(new BoxResponseDto {
+                                        Caixa_id = caixaTipo.Nome,
+                                        Produtos = new List<string> { produto.Produto_id }
+                                    });
+                                    alocado = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!alocado) {
+                            caixasUsadas.Add(new BoxResponseDto {
+                                Caixa_id = null,
+                                Produtos = new List<string> { produto.Produto_id },
+                                Observacao = "Produto não cabe em nenhuma caixa disponível."
+                            });
+                        }
                     }
                 }
 
@@ -84,6 +142,16 @@ namespace LojaDoSeuManoel.Application.Services
             var c = new[] { caixa.Altura, caixa.Largura, caixa.Comprimento }.OrderBy(x => x).ToArray();
 
             return p[0] <= c[0] && p[1] <= c[1] && p[2] <= c[2];
+        }
+
+        private bool TodosProdutosCabemNaCaixa(List<ProductRequestDto> produtos, Box caixa)
+        {
+            foreach (var produto in produtos) {
+                if (!ProdutoCabe(produto.Dimensoes, caixa)) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

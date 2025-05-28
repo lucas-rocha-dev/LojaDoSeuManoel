@@ -1,5 +1,5 @@
-﻿using LojaDoSeuManoel.Application.DTO;
-using LojaDoSeuManoel.Application.DTOs.Request;
+﻿using LojaDoSeuManoel.Application.DTOs.Request;
+using LojaDoSeuManoel.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaDoSeuManoel.API.Controllers
@@ -8,10 +8,14 @@ namespace LojaDoSeuManoel.API.Controllers
     [Route("[controller]")]
     public class OrdersController : ControllerBase
     {
+        private readonly IEmpacotadorService _service;
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RequestOrderDto orderDtos)
         {
-            return Ok("Deu certo!");
+
+            var response = await _service.ProcessarPedidosAsync(orderDtos);
+            return Ok(response);
         }
     }
 }

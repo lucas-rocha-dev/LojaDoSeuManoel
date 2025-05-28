@@ -9,14 +9,14 @@ namespace LojaDoSeuManoel.Domain.Entities
     public class Box
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string Name { get; set; } = string.Empty;
-        public decimal Altura { get; set; }
-        public decimal Largura { get; set; }
-        public decimal Comprimento { get; set; }
+        public string Nome { get; set; } 
+        public int Altura { get; set; }
+        public int Largura { get; set; }
+        public int Comprimento { get; set; }
 
-       public Box(string name, decimal altura, decimal largura, decimal comprimento)
+       public Box(string name, int altura, int largura, int comprimento)
         {
-            Name = name;
+            Nome = name;
             Altura = altura;
             Largura = largura;
             Comprimento = comprimento;
