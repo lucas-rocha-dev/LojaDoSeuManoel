@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LojaDoSeuManoel.Application.DTO;
+using LojaDoSeuManoel.Application.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LojaDoSeuManoel.API.Controllers
 {
@@ -6,12 +8,10 @@ namespace LojaDoSeuManoel.API.Controllers
     [Route("[controller]")]
     public class OrdersController : ControllerBase
     {
-
-        [HttpGet]
-        public string Get()
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] RequestOrderDto orderDtos)
         {
-            return "Deu certo!";
-
+            return Ok("Deu certo!");
         }
     }
 }
