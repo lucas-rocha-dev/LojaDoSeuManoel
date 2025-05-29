@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace LojaDoSeuManoel.Domain.Entities
 {
     public class Box
@@ -14,13 +9,17 @@ namespace LojaDoSeuManoel.Domain.Entities
         public int Largura { get; set; }
         public int Comprimento { get; set; }
 
-       public Box(string name, int altura, int largura, int comprimento)
+
+        public Box() { }
+        public Box(string name, int altura, int largura, int comprimento)
         {
+            Id = Guid.NewGuid();
             Nome = name;
             Altura = altura;
             Largura = largura;
             Comprimento = comprimento;
         }
-        
+       
+
     }
 }

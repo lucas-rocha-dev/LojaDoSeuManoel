@@ -1,15 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LojaDoSeuManoel.Application.Services
 {
-    public class AuthService
+    public class AuthService: IAuthService
     {
         private readonly IConfiguration _config;
 
