@@ -1,9 +1,11 @@
 ﻿using LojaDoSeuManoel.Application.DTOs.Request;
 using LojaDoSeuManoel.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaDoSeuManoel.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class OrdersController : ControllerBase

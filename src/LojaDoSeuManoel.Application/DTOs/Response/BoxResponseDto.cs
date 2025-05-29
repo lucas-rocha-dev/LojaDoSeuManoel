@@ -15,5 +15,3 @@ namespace LojaDoSeuManoel.Application.DTOs.Response
         public string Observacao { get; set; }
     }
 }
-//{ "produto_id": "PS5", "dimensoes": { "altura": 40, "largura": 10, "comprimento": 25} },
-//{ "produto_id": "Volante", "dimensoes": { "altura": 40, "largura": 30, "comprimento": 30} }
