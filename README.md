@@ -61,7 +61,7 @@ Assim que o processo for concluído, você poderá acessar http://localhost:5000
 
 ## Como Testar a API (Swagger UI)
 Após iniciar a API, você pode acessar a interface do Swagger UI para explorar os endpoints e realizar testes.
-1. Acesse o Swagger UI
+1. Acesse o Swagger UI \
 No navegador, acesse:
 ```plaintext
 http://localhost:5000/swagger/index.html
