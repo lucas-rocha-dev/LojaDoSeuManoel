@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mcr.microsoft.com/mssql/server
     container_name: sqlserver
     environment:
       - SA_PASSWORD=ContrateLucasComoDeveJunior01
@@ -16,12 +16,12 @@ services:
     build:
       context: .
       dockerfile: src/LojaDoSeuManoel.API/Dockerfile
-    container_name: loja-api
+    container_name: lojaDoSeuManoel-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__LojaDoSeuManoelConnection=Server=sqlserver;Database=LojaDoSeuManoel;User Id=sa;Password=ContrateLucasComoDeveJunior01;TrustServerCertificate=True;
     ports:
-      - "5000:80"
+      - "5000:8080"
     depends_on:
       - sqlserver
     networks:
