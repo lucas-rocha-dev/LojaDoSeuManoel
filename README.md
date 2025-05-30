@@ -71,10 +71,8 @@ http://localhost:5000/swagger/index.html
 2. Obtenha o Token de Autenticação
 . Acesse o endpoint /Register no Swagger UI.
 
-Utilize o método POST para solicitar um token.
-
-O endpoint espera um objeto RequestUserRegister (validado com FluentValidation).
-
+Utilize o método POST para solicitar um token. \
+O endpoint espera um objeto RequestUserRegister (validado com FluentValidation). \
 Exemplo de RequestUserRegister:
 json
 ```
@@ -84,7 +82,7 @@ json
 }
 ```
 
-Após receber o token JWT,click no cadeado use-o para autorizar requisições nos endpoints protegidos. Insira no campo ( Bearer seu_token )
+Após receber o token JWT, clique no ícone de cadeado e insira-o no campo "Bearer + [seu_token]" para autenticar as requisições nos endpoints protegidos.
 ![image](https://github.com/user-attachments/assets/e86641ee-368d-4a55-9465-47137a68153e)
 
 Os endpoints são protegidos, acessados apenas com autenticação.
