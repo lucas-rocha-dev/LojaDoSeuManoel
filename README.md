@@ -16,11 +16,11 @@ O projeto segue uma arquitetura modular, baseada no conceito de Domain-Driven De
 .
 ├── docker-compose.yml
 └── src
-    ├── LojaDoSeuManoel.API              # Camada de apresentação (Controllers, Swagger)
-    ├── LojaDoSeuManoel.Application      # Camada de aplicação (Serviços, lógica de negócio)
-    ├── LojaDoSeuManoel.Domain           # Camada de domínio (Entidades, interfaces de repositório)
-    └── LojaDoSeuManoel.Infrastructure   # Camada de infraestrutura (Implementação de repositórios, acesso a dados)
-└── tests                                # Projetos de testes (se houver)
+    ├── LojaDoSeuManoel.API              
+    ├── LojaDoSeuManoel.Application     
+    ├── LojaDoSeuManoel.Domain          
+    └── LojaDoSeuManoel.Infrastructure   
+└── tests                               
 ```
 ## Como Rodar a Aplicação
 
