@@ -10,7 +10,7 @@ Para rodar esta aplicação, você precisa ter instalado:
 
 ## Estrutura do Projeto
 
-O projeto segue uma **arquitetura modular**, dividida em camadas para melhor organização e separação de responsabilidades:
+O projeto segue uma arquitetura modular, baseada no conceito de Domain-Driven Design (DDD), dividida em camadas para melhor organização e separação de responsabilidades:
 
 ```plaintext
 .
@@ -25,21 +25,18 @@ O projeto segue uma **arquitetura modular**, dividida em camadas para melhor org
 ## Como Rodar a Aplicação
 
 A aplicação e o banco de dados SQL Server são configurados para rodar via Docker, utilizando o docker-compose.
-1. Obtenha o Código
-No terminal ou prompt de comando, clone o repositório:
+1. clone o repositório:
 ```plaintext
 bash
 git clone https://github.com/lucas-rocha-dev/LojaDoSeuManoel.git
 ```
 
-2. Navegue até a Pasta do Projeto
-Acesse o diretório raiz do projeto, onde está o arquivo docker-compose.yml:
+2. Acesse o diretório raiz do projeto, onde está o arquivo docker-compose.yml:
 ```plaintext
 bash
 cd LojaDoSeuManoel
 ```
-4. Inicie a Aplicação e o Banco de Dados
-Construa as imagens Docker e inicie os contêineres em segundo plano:
+3. Construa as imagens Docker e inicie os contêineres em segundo plano:
 ```plaintext
 bash
 docker-compose up -d --build
@@ -53,8 +50,7 @@ No navegador, acesse:
 http://localhost:5000/swagger/index.html
 ```
 2. Obtenha o Token de Autenticação
-A API utiliza autenticação JWT. Para testar endpoints protegidos, obtenha um token de acesso:
-Acesse o endpoint /Register no Swagger UI.
+. Acesse o endpoint /Register no Swagger UI.
 
 Utilize o método POST para solicitar um token.
 
@@ -69,13 +65,16 @@ json
 }
 ```
 
-Após receber o token JWT, use-o para autorizar requisições nos endpoints protegidos.
+Após receber o token JWT,click no cadeado use-o para autorizar requisições nos endpoints protegidos. Insira no campo ( Bearer seu_token )
+![image](https://github.com/user-attachments/assets/e86641ee-368d-4a55-9465-47137a68153e)
+
+Os endpoints são protegidos, acessados apenas com autenticação.
+
 3. Explore e Teste os Endpoints
+
 No Swagger UI, você verá a documentação dos endpoints disponíveis. Expanda cada endpoint para visualizar:
 Detalhes da requisição e resposta.
+![image](https://github.com/user-attachments/assets/00fb09d4-123b-4782-9200-96033a9dc98e)
 
-Esquemas de dados.
-
-Teste os endpoints diretamente, fornecendo o token de autenticação quando necessário.
 
 
