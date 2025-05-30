@@ -30,8 +30,6 @@ namespace LojaDoSeuManoel.API.Controllers
             var token = _authService.GerarTokenJWT();
             return Ok(new { token });
 
-
-           // return Unauthorized();
         }
     }
 

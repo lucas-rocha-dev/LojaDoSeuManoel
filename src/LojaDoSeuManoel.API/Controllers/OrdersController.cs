@@ -18,7 +18,7 @@ namespace LojaDoSeuManoel.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] RequestOrderDto orderDtos)
+        public async Task<IActionResult> ProcessOrders([FromBody] RequestOrderDto orderDtos)
         {
 
             var response = await _service.ProcessarPedidosAsync(orderDtos);

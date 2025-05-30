@@ -1,9 +1,10 @@
 ﻿using LojaDoSeuManoel.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaDoSeuManoel.API.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class BoxesController : ControllerBase
@@ -15,7 +16,7 @@ namespace LojaDoSeuManoel.API.Controllers
             _boxRepository = boxRepository;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var boxes = await _boxRepository.GetAllAsync();
