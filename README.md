@@ -26,19 +26,22 @@ O projeto segue uma arquitetura modular, baseada no conceito de Domain-Driven De
 
 A aplicação e o banco de dados SQL Server são configurados para rodar via Docker, utilizando o docker-compose.
 1. clone o repositório:
+
+bash:
 ```plaintext
-bash
 git clone https://github.com/lucas-rocha-dev/LojaDoSeuManoel.git
 ```
 
 2. Acesse o diretório raiz do projeto, onde está o arquivo docker-compose.yml:
+
+bash:
 ```plaintext
-bash
 cd LojaDoSeuManoel
 ```
 3. Construa as imagens Docker e inicie os contêineres em segundo plano:
+
+bash:
 ```plaintext
-bash
 docker-compose up -d --build
 ```
 ![image](https://github.com/user-attachments/assets/f18f2efa-aa20-4e34-85be-0d5a366632d7)
