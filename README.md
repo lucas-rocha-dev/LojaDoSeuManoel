@@ -1,6 +1,19 @@
 # Loja do Seu Manoel API
 
-Esta API foi desenvolvida para automatizar o processo de embalagem de pedidos da loja online do **Seu Manoel**. Dado um conjunto de pedidos com produtos e suas dimensões, a API determina quais caixas devem ser usadas para cada pedido e quais produtos irão em cada caixa, otimizando o uso do espaço e minimizando o número de caixas.
+Esta API foi desenvolvida para automatizar o processo de embalagem de pedidos da loja do **Seu Manoel**. Dado um conjunto de pedidos com produtos e suas dimensões, a API determina quais caixas devem ser usadas para cada pedido e quais produtos irão em cada caixa, otimizando o uso do espaço e minimizando o número de caixas.
+
+## Funcionalidades Implementadas
+✅ Arquitetura baseada em Domain-Driven Design (DDD) \
+✅ Dados validados com FluentValidation \
+✅ Tokens gerados com JWTs \
+✅ Testes com MSTest \
+✅ Banco de dados em SQL Server \
+✅ Lógica de empacotamento de pedidos otimizada \
+✅ API com documentação Swagger \
+✅ Entity Framework \
+✅ Projeto 100% conteinerizado com Docker \
+✅ Segurança na autenticação da API  \
+✅ Escalável
 
 ## Pré-requisitos
 
