@@ -26,33 +26,31 @@ Para rodar esta aplicação, você precisa ter instalado:
 O projeto segue uma arquitetura modular, baseada no conceito de Domain-Driven Design (DDD), dividida em camadas para melhor organização e separação de responsabilidades:
 
 ```plaintext
-.
-├── docker-compose.yml
-└── src
-    ├── LojaDoSeuManoel.API              
-    ├── LojaDoSeuManoel.Application     
-    ├── LojaDoSeuManoel.Domain          
-    └── LojaDoSeuManoel.Infrastructure   
-└── tests                               
+📦LojaDoSeuManoel
+└── 
+  📂├── docker-compose.yml
+  📂└── src
+     📂 ├── LojaDoSeuManoel.API              
+     📂 ├── LojaDoSeuManoel.Application     
+     📂 ├── LojaDoSeuManoel.Domain          
+     📂 └── LojaDoSeuManoel.Infrastructure   
+  📂└── tests                               
 ```
 ## Como Rodar a Aplicação
 
-A aplicação e o banco de dados SQL Server são configurados para rodar via Docker, utilizando o docker-compose.
-1. clone o repositório:
-
+A aplicação e o banco de dados SQL Server são configurados para rodar via Docker com poucos comandos, utilizando o docker-compose.
+1. clone o repositório: \
 bash:
 ```plaintext
 git clone https://github.com/lucas-rocha-dev/LojaDoSeuManoel.git
 ```
 
-2. Acesse o diretório raiz do projeto, onde está o arquivo docker-compose.yml:
-
+2. Acesse o diretório raiz do projeto, onde está o arquivo docker-compose.yml: \
 bash:
 ```plaintext
 cd LojaDoSeuManoel
 ```
-3. Construa as imagens Docker e inicie os contêineres em segundo plano:
-
+3. Construa as imagens Docker e inicie os contêineres em segundo plano: \
 bash:
 ```plaintext
 docker-compose up -d --build
