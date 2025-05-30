@@ -1,5 +1,6 @@
 ﻿using LojaDoSeuManoel.Application.DTOs.Request;
 using LojaDoSeuManoel.Application.Services;
+using LojaDoSeuManoel.Application.Validator;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -17,9 +18,15 @@ namespace LojaDoSeuManoel.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login([FromBody] LoginRequest request)
+        public IActionResult Login([FromBody] RequestUserRegister request)
         {
-            
+            var validator = new RegisterValidator();
+            var isValid = validator.Validate(request);
+
+            if(isValid.IsValid == false)
+            {
+                return BadRequest(isValid.Errors.Select(e => e.ErrorMessage));
+            }
             var token = _authService.GerarTokenJWT();
             return Ok(new { token });
 
