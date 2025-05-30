@@ -75,7 +75,7 @@ Exemplo de RequestUserRegister:
 json
 ```
 {
-  "username": "seu_email@mail.com",
+  "email": "seu_email@mail.com",
   "password": "acBdsd$%1213"
 }
 ```
