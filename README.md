@@ -41,6 +41,9 @@ cd LojaDoSeuManoel
 bash
 docker-compose up -d --build
 ```
+![image](https://github.com/user-attachments/assets/f18f2efa-aa20-4e34-85be-0d5a366632d7)
+
+Assim que o processo for concluído, você poderá acessar http://localhost:5000/swagger/index.html após 15 segundos, tempo médio para a integração da API com o SQL.
 
 ## Como Testar a API (Swagger UI)
 Após iniciar a API, você pode acessar a interface do Swagger UI para explorar os endpoints e realizar testes.
