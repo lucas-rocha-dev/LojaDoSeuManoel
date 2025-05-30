@@ -2,7 +2,6 @@
 
 using FluentValidation;
 using LojaDoSeuManoel.Application.DTOs.Request;
-using LojaDoSeuManoel.Domain.Entities;
 
 namespace LojaDoSeuManoel.Application.Validator
 {
