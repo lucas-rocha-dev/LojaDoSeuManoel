@@ -1,5 +1,4 @@
-﻿
-namespace LojaDoSeuManoel.Application.Services
+﻿namespace LojaDoSeuManoel.Application.Interfaces
 {
     public interface IAuthService
     {

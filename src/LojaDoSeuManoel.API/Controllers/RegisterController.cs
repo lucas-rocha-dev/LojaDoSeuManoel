@@ -1,5 +1,5 @@
 ﻿using LojaDoSeuManoel.Application.DTOs.Request;
-using LojaDoSeuManoel.Application.Services;
+using LojaDoSeuManoel.Application.Interfaces;
 using LojaDoSeuManoel.Application.Validator;
 using Microsoft.AspNetCore.Mvc;
 

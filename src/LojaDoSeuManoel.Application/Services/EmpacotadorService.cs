@@ -2,23 +2,27 @@
 using LojaDoSeuManoel.Application.DTOs.Response;
 using LojaDoSeuManoel.Application.Interfaces;
 using LojaDoSeuManoel.Domain.Entities;
+using LojaDoSeuManoel.Domain.Interfaces;
 
 namespace LojaDoSeuManoel.Application.Services
 {
     public class EmpacotadorService : IEmpacotadorService
     {
+        private readonly IBoxRepository _boxRepository;
 
-        private readonly List<Box> _caixasDisponiveis = new()
+
+        public EmpacotadorService(IBoxRepository boxRepository)
         {
-            new Box("Caixa 1", 30, 40, 80),
-            new Box("Caixa 2", 80, 50, 40),
-            new Box("Caixa 3", 50, 80, 60)
-        };
+            _boxRepository = boxRepository;
+        }
 
         public async Task<ResponseDto> ProcessarPedidosAsync(RequestOrderDto pedidos)
         {
             var resposta = new ResponseDto();
 
+            var caixasDisponiveis = (await _boxRepository.GetAllAsync())
+                .OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))
+                .ToList();
 
             foreach (var pedido in pedidos.Pedidos) {
                 var caixasUsadas = new List<BoxResponseDto>();
@@ -31,7 +35,7 @@ namespace LojaDoSeuManoel.Application.Services
 
                 bool todosProdutosAlocados = false;
 
-                foreach (var caixa in _caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
+                foreach (var caixa in caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
                     if (TodosProdutosCabemNaCaixa(produtosNaoAlocados, caixa)) {
                         caixasUsadas.Add(new BoxResponseDto {
                             Caixa_id = caixa.Nome,
@@ -47,7 +51,7 @@ namespace LojaDoSeuManoel.Application.Services
                         bool alocado = false;
 
                         foreach (var caixa in caixasUsadas) {
-                            var caixaInfo = _caixasDisponiveis.First(c => c.Nome == caixa.Caixa_id);
+                            var caixaInfo = caixasDisponiveis.First(c => c.Nome == caixa.Caixa_id);
                             if (ProdutoCabe(produto.Dimensoes, caixaInfo)) {
                                 caixa.Produtos.Add(produto.Produto_id);
                                 alocado = true;
@@ -56,7 +60,7 @@ namespace LojaDoSeuManoel.Application.Services
                         }
 
                         if (!alocado) {
-                            foreach (var caixaTipo in _caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
+                            foreach (var caixaTipo in caixasDisponiveis.OrderBy(c => CalcVolume(c.Largura, c.Altura, c.Comprimento))) {
                                 if (ProdutoCabe(produto.Dimensoes, caixaTipo)) {
                                     caixasUsadas.Add(new BoxResponseDto {
                                         Caixa_id = caixaTipo.Nome,
